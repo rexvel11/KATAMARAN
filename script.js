@@ -73,6 +73,4 @@ const optionsDay = {
 };
 
 document.getElementById("expectedTime").textContent =
-  "Expected Time: " +
-  targetDay.toLocaleDateString("en-US", optionsDay) +
-  " • 4:00 – 5:00 PM";
+  "Expected Time: " + "4:00 – 5:00 PM";
