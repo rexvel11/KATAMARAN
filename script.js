@@ -62,3 +62,17 @@ document.addEventListener("DOMContentLoaded", function () {
   updateCountdown();
   setInterval(updateCountdown, 1000);
 });
+
+// Expected Time display
+const target = new Date("2025-09-26T00:00:00");
+const options = {
+  weekday: "long",
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+  hour: "numeric",
+  minute: "2-digit",
+  hour12: true,
+};
+document.getElementById("expectedTime").textContent =
+  "Expected Time: " + target.toLocaleString("en-US", options);
