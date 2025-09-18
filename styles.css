@@ -151,21 +151,21 @@ body {
   background-clip: text;
   animation: pulse 1.5s ease-in-out infinite alternate;
 }
-
 .expected-time {
-  margin-top: 20px;
-  font-size: 1.2rem;
-  font-weight: bold;
+  margin-top: 25px;
+  font-size: 1.4rem;
+  font-weight: 600;
   text-align: center;
-  color: #ff6b6b;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(90deg, #ff6b6b, #ffd93d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   animation: fadeIn 1s ease-in-out;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(15px);
   }
   to {
     opacity: 1;

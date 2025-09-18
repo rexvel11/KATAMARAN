@@ -63,16 +63,16 @@ document.addEventListener("DOMContentLoaded", function () {
   setInterval(updateCountdown, 1000);
 });
 
-// Expected Time display
-const target = new Date("2025-09-26T00:00:00");
-const options = {
+// Expected Time display (static 4–5 PM event window)
+const targetDay = new Date("2025-09-26T16:00:00");
+const optionsDay = {
   weekday: "long",
   year: "numeric",
   month: "long",
   day: "numeric",
-  hour: "numeric",
-  minute: "2-digit",
-  hour12: true,
 };
+
 document.getElementById("expectedTime").textContent =
-  "Expected Time: " + target.toLocaleString("en-US", options);
+  "Expected Time: " +
+  targetDay.toLocaleDateString("en-US", optionsDay) +
+  " • 4:00 – 5:00 PM";
