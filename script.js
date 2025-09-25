@@ -1,6 +1,30 @@
-// Countdown timer
+// Weather notice interaction
+const weatherNotice = document.getElementById("weatherNotice");
+if (weatherNotice) {
+  weatherNotice.addEventListener("click", function () {
+    this.classList.toggle("active");
+    this.textContent = this.classList.contains("active")
+      ? "NEW DATE: SEPTEMBER 29TH"
+      : "POSTPONED DUE TO BAD WEATHER";
+  });
+}
+
+// Safety message interaction
+const safetyMsg = document.getElementById("safetyMessage");
+if (safetyMsg) {
+  safetyMsg.addEventListener("mouseenter", function () {
+    this.style.transform = "scale(1.05)";
+    this.style.transition = "transform 0.3s ease";
+  });
+
+  safetyMsg.addEventListener("mouseleave", function () {
+    this.style.transform = "scale(1)";
+  });
+}
+
+// Countdown timer - Updated to September 29th
 function updateCountdown() {
-  const targetDate = new Date("2025-09-26T00:00:00").getTime();
+  const targetDate = new Date("2025-09-29T00:00:00").getTime();
   const now = new Date().getTime();
   const distance = targetDate - now;
 
@@ -12,20 +36,11 @@ function updateCountdown() {
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    // Update numbers
-    document.getElementById("days").textContent = String(days).padStart(2, "0");
-    document.getElementById("hours").textContent = String(hours).padStart(
-      2,
-      "0"
-    );
-    document.getElementById("minutes").textContent = String(minutes).padStart(
-      2,
-      "0"
-    );
-    document.getElementById("seconds").textContent = String(seconds).padStart(
-      2,
-      "0"
-    );
+    // Update numbers with animation trigger
+    updateCountdownNumber("days", days);
+    updateCountdownNumber("hours", hours);
+    updateCountdownNumber("minutes", minutes);
+    updateCountdownNumber("seconds", seconds);
 
     // Update progress circles
     const dayProgress = (days / 365) * 360;
@@ -54,6 +69,21 @@ function updateCountdown() {
 
     // Trigger celebration
     document.querySelector(".invitation-text").textContent = "HAPPY BIRTHDAY!";
+    document.getElementById("weatherNotice").textContent =
+      "IT'S TIME TO CELEBRATE!";
+  }
+}
+
+// Animated number update
+function updateCountdownNumber(elementId, newValue) {
+  const element = document.getElementById(elementId);
+  const paddedValue = String(newValue).padStart(2, "0");
+
+  if (element.textContent !== paddedValue) {
+    element.style.animation = "none";
+    element.offsetHeight; // Trigger reflow
+    element.style.animation = "bounce 2s ease-in-out infinite";
+    element.textContent = paddedValue;
   }
 }
 
@@ -61,10 +91,18 @@ function updateCountdown() {
 document.addEventListener("DOMContentLoaded", function () {
   updateCountdown();
   setInterval(updateCountdown, 1000);
+
+  // Add click interaction to countdown circles
+  document.querySelectorAll(".countdown-circle").forEach((circle) => {
+    circle.addEventListener("click", function () {
+      this.style.animation =
+        "rotateIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55)";
+    });
+  });
 });
 
-// Expected Time display (static 4–5 PM event window)
-const targetDay = new Date("2025-09-26T16:00:00");
+// Expected Time display - Updated to September 29th
+const targetDay = new Date("2025-09-29T16:00:00");
 const optionsDay = {
   weekday: "long",
   year: "numeric",

@@ -113,6 +113,49 @@ body {
   z-index: 1;
 }
 
+.weather-notice {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 12px;
+  text-align: center;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.weather-notice:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.weather-notice.active {
+  background: linear-gradient(135deg, #6bcf7f 0%, #4d9de0 100%);
+}
+
+.safety-message {
+  background: rgba(255, 192, 203, 0.1);
+  color: #ff69b4;
+  padding: 15px;
+  text-align: center;
+  border-radius: 10px;
+  margin-top: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  border: 1px solid rgba(255, 105, 180, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.safety-message:hover {
+  background: rgba(255, 192, 203, 0.2);
+  border-color: rgba(255, 105, 180, 0.4);
+}
+
 .countdown-number {
   font-size: 2rem;
   font-weight: 700;
